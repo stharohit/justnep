@@ -1,7 +1,30 @@
 <template>
-  <div class="home d-flex align-items-center">
-    <p>this is a home page</p>
-  
+  <div class="home d-flex justify-content-between">
+    <div class="left-side">
+     <!-- <div class="w-10" style="
+    width: 10%;
+    height: 100vh;
+    background: #f6682e;
+    top: -100px;
+    position: relative;
+"></div> -->
+      <div class="search-wraps single-search pt-5 mt-5">
+        <h1 class="display-5 py-2">Find restaurants near you</h1>
+        <p>Order Delivery Food Online From Local Restaurants</p>
+        <form method="GET" class="forms-search d-flex mt-5" id="forms-search" action="/searcharea">
+          <input
+            class="form-control form-control-lg"
+            type="text"
+            placeholder="Search food or resturant"
+          />
+          <button class="btn btn-lg btn-danger" style="margin-left:-10px; border-radius:0;">Search</button>
+          <!--search-input-wrap-->
+        </form>
+      </div>
+    </div>
+    <div class="right-side">
+      <!-- <img src="../assets/food.jpg" alt=""> -->
+    </div>
   </div>
 </template>
 
@@ -10,8 +33,7 @@
 // import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
-  name: 'home',
-  components: {
-  }
-}
+  name: "home",
+  components: {}
+};
 </script>
