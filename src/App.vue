@@ -24,6 +24,13 @@
     padding: 10px 100px;
     position: relative;
     z-index: 1;
+    a{
+      color: #eee;
+  .router-link-exact-active{
+color: #fff;
+  }
+    }
+
   }
 }
 </style>
