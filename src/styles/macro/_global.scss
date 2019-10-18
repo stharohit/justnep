@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:600,800,900');
 
+
 * {
   margin: 0;
   padding: 0;
@@ -33,7 +34,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Muli', sans-serif;
   margin: 0;
 }
 
@@ -50,9 +51,31 @@ figure {
   margin: 0;
 }
 
-.custom {
-  
-  float: left;
+
+$primary : rgb(246, 104, 46);
+
+.rider {
+  // position: absolute;
+  // top: 0px;
+  // right: 0;
+  // background: $primary;
+  // width: 75px;
+  // height: 50px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+
+  i {
+    font-size: 38px;
+    //    color:$primary;
+  }
+}
+
+.btn-orange {
+  background: $primary;
+  border: $primary;
+  color: #fff;
+
 }
 
 // ======================================================================
