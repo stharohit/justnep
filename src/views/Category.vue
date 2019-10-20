@@ -1,44 +1,83 @@
 <template>
-    <div class="container resturant-outlet">
-        <div class="row">
-            <div class="col-md-4 col-sm-6 resturant-col" v-for="(element,index) in resturantsdata" :key="index">
-                <a href="" class="resturant-card">
-                    <figure class="resturant-image">
-                        <img :src="element.bannerImage"
-                             alt="">
-                    </figure>
-                    <div class="data-container">
-                        <figure class="resturant-logo">
-                            <img :src="element.miniImage"
-                                 alt="">
-                        </figure>
-                        <div class="name-container">
-                            <div class="resturant-name">{{element.name}}</div>
-                            <div class="resturant-cursine">{{element.cursineName}}</div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="card-bottom">
-                        <div class="review">
-                            <i class="icofont-star"></i>&nbsp;
-                            <span class="review-number">{{element.rating}}</span>
-                        </div>
-                        <div class="like-btn">
-                            <span class="like-number">{{element.likeCount}}</span>
-                            <button>
-                                <i class="icofont-heart"></i>
-                            </button>
-                        </div>
-                        <div class="status status--open " v-if='element.status === true'>
-                            <span>Open</span>
-                        </div>
-                        <div class="status status--closed" v-if='element.status === false'>
-                            <span>Closed</span>
-                        </div>
-                    </div>
-                </a>
+    <div class="container my-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Resturants</li>
+            </ol>
+        </nav>
+        <hr>
+        <div class="category-tabs">
+            <span> <a href="">Restaurant List </a> </span>
+            <span> <a href="">Newest </a> </span>
+            <span> <a href="">Featured</a> </span>
+            <span> <a href="">View Restaurant by map</a></span>
+        </div>
+        <hr>
+
+        <div class="food-items">
+            <div class="food-item">
+                <span class="food-item-name">Drinks</span>
+            </div>
+            <div class="food-item">
+                <span class="food-item-name">Briyani</span>
+            </div>
+            <div class="food-item">
+                <span class="food-item-name">Mexican</span>
+            </div>
+            <div class="food-item">
+                <span class="food-item-name">Chinese</span>
+            </div>
+            <div class="food-item">
+                <span class="food-item-name">Japanese</span>
+            </div>
+            <div class="food-item">
+                <span class="food-item-name">show more</span>
             </div>
         </div>
+
+        <div class=" resturant-outlet">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 resturant-col" v-for="(element,index) in resturantsdata" :key="index">
+                    <a href="" class="resturant-card">
+                        <figure class="resturant-image">
+                            <img :src="element.bannerImage"
+                                 alt="">
+                        </figure>
+                        <div class="data-container">
+                            <figure class="resturant-logo">
+                                <img :src="element.miniImage"
+                                     alt="">
+                            </figure>
+                            <div class="name-container">
+                                <div class="resturant-name">{{element.name}}</div>
+                                <div class="resturant-cursine">{{element.cursineName}}</div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="card-bottom">
+                            <div class="review">
+                                <i class="icofont-star"></i>&nbsp;
+                                <span class="review-number">{{element.rating}}</span>
+                            </div>
+                            <div class="like-btn">
+                                <span class="like-number">{{element.likeCount}}</span>
+                                <button>
+                                    <i class="icofont-heart"></i>
+                                </button>
+                            </div>
+                            <div class="status status--open " v-if='element.status === true'>
+                                <span>Open</span>
+                            </div>
+                            <div class="status status--closed" v-if='element.status === false'>
+                                <span>Closed</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -193,5 +232,17 @@
             }
         }
     }
+
+    .category-tabs{
+        display:flex;
+        text-align:center;
+        justify-content: center;
+        padding:5px 0;
+        span{
+            margin:0 15px;
+        }
+    }
+
+
 
 </style>
