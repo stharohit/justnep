@@ -157,9 +157,6 @@ export default {
     padding: 11px 100px;
     position: relative;
     z-index: 1;
-<<<<<<< HEAD
-    background:black;
-=======
 
     a {
       color: #eee;
@@ -180,7 +177,6 @@ export default {
         padding: 10px 20px;
       }
     }
->>>>>>> origin/binay
   }
 }
 </style>
