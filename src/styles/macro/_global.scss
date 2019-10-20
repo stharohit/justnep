@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:600,800,900');
 
+@font-face {
+  font-family:proximaReg;
+  src: url(../assets/proxima/ProximaNova-Regular.otf);
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -55,6 +61,11 @@ figure {
   float: left;
 }
 
+
+hr{
+  margin-top:.5rem;
+  margin-bottom:.5rem;
+}
 // ======================================================================
 //END CSS FOR CUSTOM SCROLL BAR
 //=======================================================================

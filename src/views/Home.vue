@@ -1,14 +1,6 @@
 <template>
   <div class="home d-flex justify-content-between">
     <div class="left-side">
-     <div class="w-10" style="
-      width: calc(100vw / 12 - 50px);
-    height: 100vh;
-    background: rgb(246, 104, 46);
-    top: 0;
-    position: absolute;
-    bottom: 0;
-"></div>
       <div class="search-wraps single-search pt-5 mt-5">
         <h1 class="display-5 py-2">Find restaurants near you</h1>
         <p>Order Delivery Food Online From Local Restaurants</p>
@@ -24,11 +16,9 @@
       </div>
     </div>
     <div class="right-side">
-      <!-- <img src="../assets/food.jpg" alt=""> -->
     </div>
   </div>
 </template>
-
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'

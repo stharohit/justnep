@@ -10,6 +10,7 @@
       <div class="nav-link">
         <router-link to="/">Home</router-link>|
         <router-link to="/about">About</router-link>
+        <router-link to="/category">Category</router-link>
       </div>
     </div>
     <router-view />
@@ -18,12 +19,14 @@
 
 <style lang="scss">
 #app {
-  background: #000000;
+  /*background: #000000;*/
+  background: #ffffff;
   overflow: hidden;
   #nav {
     padding: 10px 100px;
     position: relative;
     z-index: 1;
+    background:black;
   }
 }
 </style>

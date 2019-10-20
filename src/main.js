@@ -5,6 +5,7 @@ import store from './store'
 
 import "bootstrap"
 import "bootstrap/scss/bootstrap.scss";
+import "../src/assets/icons/icofont.css";
 import "../src/styles/style.scss";
 
 
