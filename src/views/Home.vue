@@ -10,21 +10,51 @@
             type="text"
             placeholder="Search food or resturant"
           />
-          <button class="btn btn-lg btn-danger" style="margin-left:-10px; border-radius:0;">Search</button>
+          <button class="btn btn-lg btn-orange" style="margin-left:-10px; border-radius:0;">Search</button>
           <!--search-input-wrap-->
         </form>
       </div>
+      <div class="social_links">
+        <a href>
+          <i class="icofont-instagram"></i>
+        </a>
+        <a href>
+          <i class="icofont-facebook"></i>
+        </a>
+        <a href>
+          <i class="icofont-linkedin"></i>
+        </a>
+        <a href>
+          <i class="icofont-youtube"></i>
+        </a>
+        <a href>
+          <i class="icofont-twitter"></i>
+        </a>
+      </div>
+      <div class="app_links d-flex justify-content-start align-items-center">
+        <div class="playstore">
+          <img src="../assets/playstore.svg" alt />
+        </div>
+        <div class="appstore">
+          <img src="../assets/appstore.svg" alt />
+        </div>
+      </div>
     </div>
     <div class="right-side">
+
     </div>
   </div>
 </template>
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
+// import Login from "@/components/Login.vue";
 
 export default {
   name: "home",
-  components: {}
+  // components: {
+  //   Login
+  // },
+  
 };
 </script>
