@@ -7,7 +7,8 @@ import "bootstrap"
 import "bootstrap/scss/bootstrap.scss";
 import "../src/assets/icons/icofont.css";
 import "../src/styles/style.scss";
-import "../src/assets/icons/icofont.css";
+import "../src/styles/responsive.scss";
+import "../src/assets/icons/icofont.css";   
 
 
 // Vue.config.productionTip = false

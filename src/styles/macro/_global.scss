@@ -22,6 +22,7 @@ body {
   color: #666;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 
 }
 
@@ -86,6 +87,9 @@ $primary : rgb(246, 104, 46);
   border: $primary;
   color: #fff;
 
+}
+.no-wrap{
+  white-space: nowrap;
 }
 
 

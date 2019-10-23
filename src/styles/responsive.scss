@@ -1,0 +1,137 @@
+// small laptop
+@media only screen and (max-width:1200px){
+// search component
+    .search-wraps.single-search {
+        margin-top: 10px!important;
+        h1{
+            font-size: 1.8rem;
+        }
+        .forms-search {
+            margin-top: 20px!important;
+        }
+    } 
+}
+// tablet view
+@media only screen and (max-width:991px){
+    // search component
+    .search-wraps.single-search {
+        margin-top: 10px!important;
+        h1{
+            font-size: 1.5rem;
+        }
+        .forms-search {
+            margin-top: 20px!important;
+        }
+    } 
+}
+
+@media only screen and (max-width:767px) {
+    // home component
+    .home {
+        height: 100%;
+        flex-wrap: wrap;
+
+        .left-side,
+        .right-side {
+            width: 100% !important;
+        }
+
+        .left-side {
+            height: 100vh;
+            .search-wraps,
+            .app_links {
+                padding: 0 100px;
+            }
+             .search-wraps.single-search {
+                 margin-top: 10px!important;
+                 h1{
+                     font-size: 1.8rem;
+                 }
+                 .forms-search {
+                     margin-top: 20px!important;
+                 }
+             }  
+            .app_links {
+                position: relative;
+                bottom: -50px;
+            }
+        }
+    }
+}
+// mobile view
+
+@media only screen and (max-width:575px) {
+    #nav{
+        padding: 11px 40px!important;
+        .logo{
+            max-width: 100px!important;
+        }
+    }
+
+    // sidenav component
+    .w-10{
+        height: 50px!important;
+        background: none!important;
+        padding: 11px 0;
+    }
+    .w-10.active{
+        width: 100%!important;
+    }
+    .bar{
+        padding: 5px 12px !important;
+    }
+    .bar span{
+         width: 15px!important;
+         height: 1px!important;
+    }
+    .bar span.second {
+      width: 20px !important;
+    }
+
+    .show_hide--menu {
+        top: 0px!important;
+        background: #f6682e;
+    }
+    // home component
+    .home {
+        height: 100%;
+        flex-wrap: wrap;
+
+        .left-side,
+        .right-side {
+            width: 100% !important;
+        }
+
+        .left-side {
+            height: 100vh;
+            .search-wraps,
+            .app_links {
+                padding: 0 20px ;
+            }
+             .search-wraps.single-search {
+                 margin-top: 10px!important;
+                 h1{
+                     font-size: 1.5rem;
+                 }
+                 .forms-search {
+                     margin-top: 20px!important;
+                 }
+             }  
+            .app_links {
+                            
+                position: absolute;
+                bottom: 100px;
+                left: 30%;
+               
+                transform: translateX(-20%);
+            }
+            .social_links {
+                            
+                position: absolute;
+                bottom: 50px;
+                right: 50%;
+                transform: translateX(50%);
+            }
+        }
+    }
+}

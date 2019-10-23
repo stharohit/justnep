@@ -4,15 +4,7 @@
       <div class="search-wraps single-search pt-5 mt-5">
         <h1 class="display-5 py-2">Find restaurants near you</h1>
         <p>Order Delivery Food Online From Local Restaurants</p>
-        <form method="GET" class="forms-search d-flex mt-5" id="forms-search" action="/searcharea">
-          <input
-            class="form-control form-control-lg"
-            type="text"
-            placeholder="Search food or resturant"
-          />
-          <button class="btn btn-lg btn-orange" style="margin-left:-10px; border-radius:0;">Search</button>
-          <!--search-input-wrap-->
-        </form>
+        <Search />
       </div>
       <div class="social_links">
         <a href>
@@ -40,21 +32,24 @@
         </div>
       </div>
     </div>
-    <div class="right-side">
-
-    </div>
+    <div class="right-side"></div>
   </div>
 </template>
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 // import Login from "@/components/Login.vue";
-
+import Search from "@/components/Search";
 export default {
   name: "home",
-  // components: {
-  //   Login
-  // },
-  
+  components: {
+    Search
+  },
+  data() {
+    return {
+      // Gets the current pathname
+    };
+  },
+  methods: {}
 };
 </script>
