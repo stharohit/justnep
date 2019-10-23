@@ -10,7 +10,7 @@ import "../src/styles/style.scss";
 import "../src/assets/icons/icofont.css";
 
 
-Vue.config.productionTip = false
+// Vue.config.productionTip = false
 
 new Vue({
   router,

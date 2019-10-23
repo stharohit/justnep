@@ -15,24 +15,15 @@
         </div>
         <hr>
 
-        <div class="food-items">
-            <div class="food-item">
-                <span class="food-item-name">Drinks</span>
+        <div class="food-items" >
+
+            <div class="food-item"  v-for="(element,index) in fooditems" :key="index" v-bind:class="{'is-collapsed':collapsed}" >
+                <span class="food-item-name" >{{element.name}}</span>
             </div>
-            <div class="food-item">
-                <span class="food-item-name">Briyani</span>
-            </div>
-            <div class="food-item">
-                <span class="food-item-name">Mexican</span>
-            </div>
-            <div class="food-item">
-                <span class="food-item-name">Chinese</span>
-            </div>
-            <div class="food-item">
-                <span class="food-item-name">Japanese</span>
-            </div>
-            <div class="food-item">
-                <span class="food-item-name">show more</span>
+            <!--show more button-->
+            <div class="food-item show-more" @click=" collapsed = !collapsed">
+                <span class="food-item-name">
+                    <i :class="{'icofont-plus-circle':collapsed,'icofont-minus-circle':!collapsed,}"></i>&nbsp;Show {{ collapsed ? 'More' : 'Less' }}</span>
             </div>
         </div>
 
@@ -88,9 +79,25 @@
         name: "Category",
         data() {
             return {
-                resturantsdata: resturants
+                collapsed: true,
+                resturantsdata: resturants,
+                fooditems: [
+                    {name: 'Snacks'},
+                    {name: 'Burger'},
+                    {name: 'Pasta'},
+                    {name: 'Dessert'},
+                    {name: 'Chinese'},
+                    {name: 'Japanese'},
+                    {name: 'Salad'},
+                    {name: 'Mexican'},
+                    {name: 'Biriyani'},
+                    {name: 'Drinks'},
+                    {name: 'Bangla'},
+                    {name: 'Italian'},
+                ]
             }
-        }
+        },
+
     }
 </script>
 
@@ -132,6 +139,7 @@
             border-radius: 3px;
             height: 180px;
             width: 100%;
+
             img {
                 object-fit: cover;
             }
@@ -143,8 +151,9 @@
             border-radius: 10px;
             overflow: hidden;
             margin-right: 10px;
-            img{
-                height:auto;
+
+            img {
+                height: auto;
                 vertical-align: middle;
             }
         }
@@ -233,16 +242,58 @@
         }
     }
 
-    .category-tabs{
-        display:flex;
-        text-align:center;
+    .category-tabs {
+        display: flex;
+        text-align: center;
         justify-content: center;
-        padding:5px 0;
-        span{
-            margin:0 15px;
+        padding: 5px 0;
+
+        span {
+            margin: 0 15px;
         }
     }
 
+    .food-items {
+        display: flex;
+        flex-wrap: wrap;
+        width: calc(100% + 15px);
+        overflow: hidden;
+        transition: all .3s ease-in-out;
+        position: relative;
+        /*animation:bounce-in .2s reverse;*/
+        .food-item {
+            height: 44px;
+            width: calc(16.66667% - 15px);
+            padding: 0 15px;
+            font-size: 15px;
+            border-radius: 4px;
+            margin-right: 15px;
+            background: #eef0f3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            cursor: pointer;
+            transition:all .2s ease-in-out;
+            /*animation: bounce-in 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ;*/
+            &.show-more {
+                background: #F6682E;
+                color: #ffffff;
+            }
+        }
 
+    }
+
+    .is-collapsed:nth-child(n+6) {
+        display: none;
+    }
+    /*@keyframes bounce-in {*/
+        /*0% {*/
+            /*transform: scale(0);*/
+        /*}*/
+        /*100% {*/
+            /*transform: scale(1);*/
+        /*}*/
+    /*}*/
 
 </style>
