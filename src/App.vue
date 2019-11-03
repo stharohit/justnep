@@ -3,6 +3,9 @@
     <div v-if="$route.path == '/'">
      <HomeNav v-bind:addActive="this.addActive"></HomeNav>
     </div>
+     <div v-if="$route.path !== '/'">
+     <Navbar v-bind:addActive="this.addActive"></Navbar>
+    </div>
     <div :class="{ active: !isHidden }">
       <div class="overlay" v-on:click="addActive"></div>
       <transition name="slide-right-left" key="2">
@@ -15,6 +18,7 @@
 <script>
 import Login from "@/components/Login.vue";
 import  HomeNav from "@/components/HomeNav.vue";
+import  Navbar from "@/components/global/Navbar.vue";
 export default {
   data() {
     return {
@@ -32,7 +36,8 @@ export default {
   },
   components: {
     Login,
-    HomeNav
+    HomeNav,
+    Navbar
   }
 };
 </script>
