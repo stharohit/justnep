@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+// import Resturantprofile from '../views/Resturantprofile.vue'
+import Category from '../views/Category.vue'
 
 Vue.use(VueRouter)
 
@@ -20,14 +22,20 @@ const routes = [
   },{
     path: '/category',
     name: 'category',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Category.vue')
+    // component: () => import( '../views/Category.vue')
+    component: Category
+  },{
+    path: '/profile',
+    name: 'profile',
+    component: () => import( '../views/Resturantprofile.vue')
+    // component: Resturantprofile
   }
-]
+];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
 
 export default router

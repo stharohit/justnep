@@ -2,10 +2,9 @@
 
 
 @font-face {
-  font-family:proximaReg;
+  font-family: proximaReg;
   src: url(../assets/proxima/ProximaNova-Regular.otf);
 }
-
 
 
 * {
@@ -22,7 +21,7 @@ body {
   color: #666;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  //overflow: hidden;
 
 }
 
@@ -42,7 +41,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Muli', sans-serif;
+  //font-family: 'Muli', sans-serif;
   margin: 0;
 }
 
@@ -60,7 +59,7 @@ figure {
 }
 
 
-$primary : rgb(246, 104, 46);
+$primary: rgb(246, 104, 46);
 
 .rider {
   // position: absolute;
@@ -78,8 +77,9 @@ $primary : rgb(246, 104, 46);
     //    color:$primary;
   }
 }
-.orange{
-  color:$primary;
+
+.orange {
+  color: $primary;
 }
 
 .btn-orange {
@@ -88,15 +88,47 @@ $primary : rgb(246, 104, 46);
   color: #fff;
 
 }
-.no-wrap{
+
+.no-wrap {
   white-space: nowrap;
 }
 
 
-hr{
-  margin-top:.5rem;
-  margin-bottom:.5rem;
+hr {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
 }
+
+.bold {
+  font-weight: bold;
+}
+
 // ======================================================================
 //END CSS FOR CUSTOM SCROLL BAR
 //=======================================================================
+
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  border-radius: 3px;
+  padding: 0 5px;
+  margin-left: 10px;
+
+  &--open {
+    background: #5cb85c;
+
+  }
+
+  &--closed {
+    background: #c4001d;
+
+  }
+}
+
+a.primary-link, a.primary-link:hover {
+  color: darken(#00A082, 10%);
+  font-weight: 700;
+  border-right: 3px solid darken(#00A082, 10%);
+}

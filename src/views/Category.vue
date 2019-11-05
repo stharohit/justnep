@@ -222,24 +222,7 @@
             }
         }
 
-        .status {
-            display: flex;
-            align-items: center;
-            color: #ffffff;
-            border-radius: 3px;
-            padding: 0 5px;
-            margin-left: 10px;
 
-            &--open {
-                background: #5cb85c;
-
-            }
-
-            &--closed {
-                background: #c4001d;
-
-            }
-        }
     }
 
     .category-tabs {
@@ -287,13 +270,6 @@
     .is-collapsed:nth-child(n+6) {
         display: none;
     }
-    /*@keyframes bounce-in {*/
-        /*0% {*/
-            /*transform: scale(0);*/
-        /*}*/
-        /*100% {*/
-            /*transform: scale(1);*/
-        /*}*/
-    /*}*/
+
 
 </style>
