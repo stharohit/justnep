@@ -3,39 +3,45 @@
         <div v-if="$route.path == '/'">
             <HomeNav v-bind:addActive="this.addActive"></HomeNav>
         </div>
-        <div :class="{ active: !isHidden }">
-            <div class="overlay" v-on:click="addActive"></div>
-            <transition name="slide-right-left" key="2">
-                <Login v-if="!isHidden" v-bind:addActive="this.addActive"/>
-            </transition>
-        </div>
-        <router-view/>
+
+
+     <div v-if="$route.path !== '/'">
+     <Navbar v-bind:addActive="this.addActive"></Navbar>
     </div>
+    <div :class="{ active: !isHidden }">
+      <div class="overlay" v-on:click="addActive"></div>
+      <transition name="slide-right-left" key="2">
+        <Login v-if="!isHidden" v-bind:addActive="this.addActive" />
+      </transition>
+    </div>
+    <router-view />
+  </div>
 </template>
 <script>
-    import Login from "@/components/Login.vue";
-    import HomeNav from "@/components/HomeNav.vue";
-
-    export default {
-        data() {
-            return {
-                isHidden: true
-            };
-        },
-        methods: {
-            addActive() {
-                this.isHidden = !this.isHidden;
-            },
-            debug() {
-                var curr = window.location.pathname; // eslint-disable-line
-                console.log(curr); // eslint-disable-line no-console
-            }
-        },
-        components: {
-            Login,
-            HomeNav
-        }
+import Login from "@/components/Login.vue";
+import  HomeNav from "@/components/HomeNav.vue";
+import  Navbar from "@/components/global/Navbar.vue";
+export default {
+  data() {
+    return {
+      isHidden: true
     };
+  },
+  methods: {
+    addActive() {
+      this.isHidden = !this.isHidden;
+    },
+    debug() {
+      var curr = window.location.pathname; // eslint-disable-line
+      console.log(curr); // eslint-disable-line no-console
+    }
+  },
+  components: {
+    Login,
+    HomeNav,
+    Navbar
+  }
+};
 </script>
 
 <style lang="scss">
