@@ -1,45 +1,118 @@
 <template>
-  <div class="container my-4">
-    <Breadcrumb />
-    <hr />
-    <div class="category-tabs">
-      <span>
-        <a href>Restaurant List</a>
-      </span>
-      <span>
-        <a href>Newest</a>
-      </span>
-      <span>
-        <a href>Featured</a>
-      </span>
-      <span>
-        <a href>View Restaurant by map</a>
-      </span>
+  <div>
+    <div class="resturant-outlet">
+      <div class="row">
+        <div class="col-md-4 col-sm-6 resturant-col" v-for="(element,index) in filterList" :key="index">
+          <a href="javascript:void(0)" class="resturant-card">
+            <figure class="resturant-image">
+              <img :src="element.bannerImage" alt />
+            </figure>
+            <div class="data-container">
+              <figure class="resturant-logo">
+                <img :src="element.miniImage" alt />
+              </figure>
+              <div class="name-container">
+                <div class="resturant-name">{{element.name}}</div>
+                <div class="resturant-cursine">
+                  {{element.cursineName}}
+                  <span v-for="(fooditem,index) in element.foodName.slice(0, 2)" :key="index">
+                    <span class="mr-1">- {{fooditem}}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="card-bottom">
+              <div class="review">
+                <i class="icofont-star"></i>&nbsp;
+                <span class="review-number">{{element.rating}}</span>
+              </div>
+              <div class="like-btn">
+                <span class="like-number">{{element.likeCount}}</span>
+                <button>
+                  <i class="icofont-heart"></i>
+                </button>
+              </div>
+              <div class="status status--open" v-if="element.status === true">
+                <span>Open</span>
+              </div>
+              <div class="status status--closed" v-if="element.status === false">
+                <span>Closed</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
-    <hr />
-    <Resturantfilter />
-    <Resturants />
-
+    <scroll-loader :loader-method="getImagesInfo" :loader-enable="loadMore" loader-color="rgba(102,102,102,.5)">
+    </scroll-loader>
   </div>
 </template>
 
 <script>
-  import Breadcrumb from "@/components/global/Breadcrumb";
-  import Resturantfilter from "@/components/resturant/Resturantfilter";
-  import Resturants from "@/components/resturant/Resturants";
+  import {
+    resturants
+  } from "../../data/data";
+  import Scroll from "@/components/global/Scroll-Loader";
+//  import axios from 'axios'
+
   export default {
-    name: "Category",
+    name: "resturants",
     data() {
       return {
- 
-       
+        loadMore: true,
+        page: 1,
+        pageSize: 9,
+        resturantsdata: resturants,
+        local:this.$store.state.cursinename,
+        myArrayFiltered:[]
+     
       };
     },
-    components: {
-      Breadcrumb,
-      Resturantfilter,
-      Resturants
+    components:{
+      'scroll-loader': Scroll
     },
+    methods: {
+      getImagesInfo() {
+         this.page++,
+         this.pageSize += this.pageSize;
+      },
+  filterArray(arr, f) {
+ 
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = 0; j < f.length; j++) {
+      if (arr[i].cursineName === f[j].cursineName) {
+        this.myArrayFiltered.push(arr[i]);
+      }
+    }
+  }
+  return this.myArrayFiltered
+
+}
+    },
+    watch: {
+      page(n) {
+        n > 20 && (this.loadMore = false)
+      }
+    },
+     mounted() {
+      this.getImagesInfo()
+    },
+    computed: {
+ 
+
+    
+      filterList() {
+        // if (this.local.length > 0) {
+        //   return this.resturantsdata.filter(
+        //     resturant => this.local.match(resturant.cursineName)
+        //   );
+        // } else {
+          return this.filterArray(this.resturantsdata, this.local);
+        // }
+
+      } // this filterList will do the filter 
+    }
   };
 </script>
 
@@ -250,16 +323,4 @@
       opacity: 1;
     }
   }
-
-  // .is-collapsed:nth-child(n+6) {
-  //     display: none;
-  // }
-  /*@keyframes bounce-in {*/
-  /*0% {*/
-  /*transform: scale(0);*/
-  /*}*/
-  /*100% {*/
-  /*transform: scale(1);*/
-  /*}*/
-  /*}*/
 </style>

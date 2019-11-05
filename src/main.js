@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import axios from 'axios'
+import ScrollLoader from 'vue-scroll-loader'
 
 import "bootstrap"
 import "bootstrap/scss/bootstrap.scss";
@@ -11,7 +13,10 @@ import "../src/styles/responsive.scss";
 import "../src/assets/icons/icofont.css";   
 
 
-// Vue.config.productionTip = false
+
+Vue.use(ScrollLoader)
+Vue.prototype.$http = axios
+Vue.config.productionTip = false
 
 new Vue({
   router,
