@@ -30,6 +30,8 @@
                 limit: true,
                 resturantsdata: resturants,
 
+                store: this.$store.state.cursinename
+
             };
         },
 
@@ -43,50 +45,72 @@
                 //this method will toggle the array active element to true or false
 
             },
+            del(index) {
+                this.store.splice(this.store.indexOf(index), 1);
+            },
             get(element) {
+
+
                 if (element.active) {
-                    this.$store.state.cursinename.push({cursineName: element.cursineName});
-                    console.log(this.$store.state.cursinename)
+                    this.store.push(element);
+                    // console.log('push',this.store)
+
                     // this method will push the element into the array if parameter (element) is active:true
-                } else if (!element.active) {
-                    this.$store.state.cursinename.splice(this.$store.state.cursinename.indexOf(element), 1);
+                } else {
+                    this.del(element)
                     // this method will remove from the added array if parameter (element) is active:false
                 }
 
             },
-        },
-        mounted() {
-            let d = this.resturantsdata.map(item => item.cuisine.map(x => x.cuisine_name));
-
-            d.forEach(y=>console.log(y.filter((item,idx,arr)=>arr.indexOf(item)===idx)));
-            console.log(d);
 
         },
+        // mounted() {
+        //     let d = this.resturantsdata.map(item => item.cuisine.map(x => x.cuisine_name));
+        //
+        //     d.forEach(y => console.log(y.filter((item, idx, arr) => arr.indexOf(item) === idx)));
+        //     console.log(d);
+        //
+        // },
         computed: {
+
 
             computedObj1() {
 
                 // let parent = this.resturantsdata.map( item => item.cuisine.cuisine_name)
                 //       .filter( ( item, idx, arr ) => arr.indexOf( item ) === idx )
-                let parent = this.resturantsdata.map(item => item.cuisine.map(x => x.cuisine_name))
-                    .filter((item, idx, arr) => arr.indexOf(item) === idx)
+                // let parent = this.resturantsdata.map(item => item.cuisine.map(x => x.cuisine_name))
+                //     .filter((item, idx, arr) => arr.indexOf(item) === idx)
                 //You can do Array.prototype.map() to get an array with the objects name property and
                 //than Array.prototype.filter() using the parameters elem, index and array, in the function predicate, to eliminate repeated elements
 
-                let findParent = parent.map((e) => {
-                    return this.resturantsdata.find((a) => {
-                        return a.cuisine.cuisine_name === e
-                    })
-                })
-                //Using map/find (instead of filter):
-                //which maps parent to an array of objects, 
-                //where it finds the object from findParent that has the same _id 
-                //as the current id.
-                return this.limit ? findParent.slice(0, 5) : findParent;
+                // let findParent = parent.map((e) => {
+                //     return this.resturantsdata.find((a) => {
+                //         return a.cuisine.cuisine_name === e
+                //     })
+                // })
+                // Using map/find (instead of filter):
 
-            },
-            //this code will show 5 element of the array list
-        }
+                 // computedObj1() {
+
+                   let parent = this.resturantsdata.map( item => item.cursineName )
+                         .filter( ( item, idx, arr ) => arr.indexOf( item ) == idx )
+                        //  console.log(parent)
+                    //this code will not  dupliacte array list or donot print same list more than one
+                     //You can do Array.prototype.map() to get an array with the objects name property and
+                     //than Array.prototype.filter() using the parameters elem, index and array, in the function predicate, to eliminate repeated elements
+
+                    let findParent = parent.map((e) => { return this.resturantsdata.find((a) => { return a.cursineName  == e})})
+                   // Using map/find (instead of filter):
+
+                    //which maps parent to an array of objects,
+                    //where it finds the object from findParent that has the same _id
+                    //as the current id.
+                    // console.log(findParent)
+                    return this.limit ? findParent.slice(0, 5) : findParent;
+
+                },
+                // this code will show 5 element of the array list
+            }
     };
 </script>
 
