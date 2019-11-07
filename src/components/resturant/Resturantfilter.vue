@@ -1,7 +1,7 @@
 <template>
     <div class="food-items">
         <div class="food-item" v-for="(element,index) in computedObj1 " :key="index" :class="{ active: element.active }"
-            @click="toggle(element); get(element); " >
+            @click="toggle(element); get(element) " >
             <span class="food-item-name" >{{element.cursineName}}</span>
         </div>
 
@@ -26,6 +26,7 @@
             return {
                 limit: true,
                 resturantsdata: resturants,
+                store: this.$store.state.cursinename
                
             };
         },
@@ -40,29 +41,31 @@
               //this method will toggle the array active element to true or false
 
             },
+            del (index) {
+               this.store.splice(this.store.indexOf(index), 1);
+            },
             get(element) {
-                if (element.active) {
-                    this.$store.state.cursinename.push({cursineName:element.cursineName});
-                    console.log(this.$store.state.cursinename)
+                    
+                if (element.active){
+                    this.store.push(element);
+                    // console.log('push',this.store)
                     // this method will push the element into the array if parameter (element) is active:true
-                } else if (!element.active) {
-                    this.$store.state.cursinename.splice(this.$store.state.cursinename.indexOf(element), 1);
-                    // this method will remove from the added array if parameter (element) is active:false
+                } 
+                else{
+                    this.del(element)
+                   // this method will remove from the added array if parameter (element) is active:false
                 }
 
             },
+        
         },
         computed: {
-            // computedObj() {
-        
-            //     return this.limit ? this.resturantsdata.slice(0, 5) : this.resturantsdata;
-            //     // return [...new Set(this.resturantsdata.map(a => a.parent_id))]
-               
-            // },
              computedObj1() {
         
                let parent = this.resturantsdata.map( item => item.cursineName )
                      .filter( ( item, idx, arr ) => arr.indexOf( item ) == idx ) 
+                    //  console.log(parent)
+                //this code will not  dupliacte array list or donot print same list more than one 
                  //You can do Array.prototype.map() to get an array with the objects name property and 
                  //than Array.prototype.filter() using the parameters elem, index and array, in the function predicate, to eliminate repeated elements    
                   
@@ -71,6 +74,7 @@
                 //which maps parent to an array of objects, 
                 //where it finds the object from findParent that has the same _id 
                 //as the current id.
+                // console.log(findParent)
                 return this.limit ? findParent.slice(0, 5) : findParent;
               
             },
