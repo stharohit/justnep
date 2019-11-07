@@ -14,10 +14,13 @@
               <div class="name-container">
                 <div class="resturant-name">{{element.name}}</div>
                 <div class="resturant-cursine">
-                  {{element.cursineName}}
-                  <span v-for="(fooditem,index) in element.foodName.slice(0, 2)" :key="index">
-                    <span class="mr-1">- {{fooditem}}</span>
+                  <!--{{element.cursineName}}-->
+                  <span v-for="(name,i) in element.cuisine.slice(0,3)" :key="i">
+                    {{name.cuisine_name}} -
                   </span>
+                  <!--<span v-for="(fooditem,index) in element.foodName.slice(0, 2)" :key="index">-->
+                    <!--<span class="mr-1">- {{fooditem}}</span>-->
+                  <!--</span>-->
                 </div>
               </div>
             </div>
@@ -50,9 +53,7 @@
 </template>
 
 <script>
-  import {
-    resturants
-  } from "../../data/data";
+  import {resturants} from "../../data/data";
   import Scroll from "@/components/global/Scroll-Loader";
 //  import axios from 'axios'
 

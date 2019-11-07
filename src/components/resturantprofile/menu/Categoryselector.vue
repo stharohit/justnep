@@ -17,17 +17,22 @@
             </perfect-scrollbar>
         </div>
 
+        <div v-for="(data,i) in datas" :key="i">
+            {{data.name}}
+        </div>
+
     </div>
 </template>
 
 <script>
-
+    import {alldata} from '../../../data/data.js'
 
     export default {
         name: "Categoryselector",
         data() {
             return {
                 sticky: false,
+                datas:alldata,
                 menuCategories:
                     [
 
