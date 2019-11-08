@@ -14,10 +14,14 @@
               <div class="name-container">
                 <div class="resturant-name">{{element.name}}</div>
                 <div class="resturant-cursine">
-                  {{element.cursineName}}
-                  <span v-for="(fooditem,index) in element.foodName.slice(0, 2)" :key="index">
-                    <span class="mr-1">- {{fooditem}}</span>
+                  <span v-for="(fooditem,index) in element.cuisine" :key="index">
+                    <span v-for="(x,i) in fooditem" :key="i">
+                      {{x.cuisine_name}}
+                    </span>
                   </span>
+                  <!--<span v-for="(fooditem,index) in element.foodName.slice(0, 2)" :key="index">-->
+                    <!--<span class="mr-1">- {{fooditem}}</span>-->
+                  <!--</span>-->
                 </div>
               </div>
             </div>
