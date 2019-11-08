@@ -1,8 +1,11 @@
 <template>
     <div class="food-items">
         <div class="food-item" v-for="(element,index) in computedObj1 " :key="index" :class="{ active: element.active }"
-            @click="toggle(element); get(element); " >
-            <span class="food-item-name" >{{element.cursineName}}</span>
+             @click="toggle(element); get(element); ">
+            <span class="food-item-name">{{element.cuisine}}</span>
+            <!--<span class="food-item-name" v-for="(name,i) in element.cuisine" :key="i">-->
+            <!--{{name.cuisine_name}}-->
+            <!--</span>-->
         </div>
 
         <!--show more button-->
@@ -26,7 +29,9 @@
             return {
                 limit: true,
                 resturantsdata: resturants,
-               
+
+                store: this.$store.state.cursinename
+
             };
         },
 
@@ -37,18 +42,25 @@
             },
             toggle(element) {
                 element.active = !element.active;
-              //this method will toggle the array active element to true or false
+                //this method will toggle the array active element to true or false
 
             },
+            del(index) {
+                this.store.splice(this.store.indexOf(index), 1);
+            },
             get(element) {
+
+
                 if (element.active) {
-                    this.$store.state.cursinename.push({cursineName:element.cursineName});
-                    console.log(this.$store.state.cursinename)
+                    this.store.push(element);
+                    // console.log('push',this.store)
+
                     // this method will push the element into the array if parameter (element) is active:true
-                } else if (!element.active) {
-                    this.$store.state.cursinename.splice(this.$store.state.cursinename.indexOf(element), 1);
+                } else {
+                    this.del(element)
                     // this method will remove from the added array if parameter (element) is active:false
                 }
+
             }
         },
         mounted(){
@@ -60,16 +72,20 @@
                 }
             }));
             console.log(a);
-        },
+
+            },
+
+
+
         computed: {
 
              computedObj1() {
 
-               // let parent = this.resturantsdata.map( item => item.cursineName )
-               //       .filter( ( item, idx, arr ) => arr.indexOf( item ) === idx );
+               let parent = this.resturantsdata.map( item => item.cursineName )
+                     .filter( ( item, idx, arr ) => arr.indexOf( item ) === idx );
                  //You can do Array.prototype.map() to get an array with the objects name property and 
                  //than Array.prototype.filter() using the parameters elem, index and array, in the function predicate, to eliminate repeated elements    
-               let findParent = a.map((e) => { return this.resturantsdata.find((a) => { return a.cursineName  == e})})
+               let findParent = parent.map((e) => { return this.resturantsdata.find((a) => { return a.cursineName  == e})})
                //Using map/find (instead of filter):
                 //which maps parent to an array of objects, 
                 //where it finds the object from findParent that has the same _id 
@@ -94,7 +110,8 @@
             margin-bottom: 50px;
         }
 
-        &-col {}
+        &-col {
+        }
 
         &-card {
             /*background:ghostwhite;*/

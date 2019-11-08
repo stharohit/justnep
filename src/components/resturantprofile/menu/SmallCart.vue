@@ -6,7 +6,8 @@
                 <div class="empty">
                     <img src="../../../assets/smallcart.svg" alt="">
                     <p class="title">Your Cart is Empty</p>
-                    <p class="sub-title">Good food is always cooking! Go ahead, order some yummy items from the menu.</p>
+                    <p class="sub-title">Good food is always cooking! Go ahead, order some yummy items from the
+                        menu.</p>
                 </div>
                 <div class="full">
                     <form class="">
@@ -104,7 +105,7 @@
                                 </div>
                             </div>
                             <div class="box">
-                                <button type="button" class="btn btn-secondary">Proceed to check out </button>
+                                <button type="button" class="btn btn-secondary">Proceed to check out</button>
                             </div>
                         </div>
 
@@ -117,25 +118,46 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
 
     export default {
         name: "SmallCart",
-        data(){
+        data() {
             return {
-                sticky:false
+                sticky: false,
+                apidata:''
             }
         },
         methods: {
             scrolled() {
                 this.sticky = window.pageYOffset > this.$refs.smallCart.offsetTop;
+
+            },
+            getImagesInfo() {
+                axios.get('https://justnep.com/mobileappv2/api/getsettings/?api_key=mannuji', {
+
+                })
+                    .then(res => {
+                        this.apidata=res.data;
+                        // console.log(res.data);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
             }
+
+
         },
         mounted() {
             window.addEventListener('scroll', this.scrolled);
+            this.getImagesInfo();
+
         },
-        beforeDestroy() {
-            window.removeEventListener('scroll', this.scrolled);
-        }
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.scrolled);
+
+    }
     }
 </script>
 
@@ -164,9 +186,11 @@
     .empty {
         /*display: none;*/
     }
-    .full{
-        display:none
+
+    .full {
+        display: none
     }
+
     .productCard {
         background: ghostwhite;
         padding: 5px 0;
@@ -214,7 +238,7 @@
 
         &-summary {
             .subtotal {
-                margin-top:10px;
+                margin-top: 10px;
             }
 
             .box {
@@ -242,7 +266,8 @@
                     color: darken(#00A082, 10%);;
                     margin: 0;
                 }
-                button{
+
+                button {
                     background: #00A145;
                     width: 100%;
                 }
@@ -262,3 +287,5 @@
         width: 33.33%;
     }
 </style>
+
+<!--18d42d1416a90042eaccd94d5d82bdf8-->
