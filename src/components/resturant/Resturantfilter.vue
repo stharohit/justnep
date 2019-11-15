@@ -1,7 +1,7 @@
 <template>
     <div class="food-items">
 
-        <div class="food-item" v-for="(element,index) in susant  " :key="index" :class="{active:element.active}"
+        <div class="food-item" v-for="(element,index) in computedObj1  " :key="index"
              @click="toggle(element);get(element); ">
             <span class="food-item-name">{{element.cuisineName}}</span>
         </div>
@@ -14,8 +14,6 @@
                 &nbsp;Show {{ limit ? 'More' : 'Less' }}
             </span>
         </div>
-
-
     </div>
 </template>
 
@@ -28,11 +26,10 @@
         name: "resturantfilter",
         data() {
             return {
-                active: false,
+                // active: false,
                 limit: true,
                 resturantsdata: resturants,
                 store: this.$store.state.cursinename,
-                datavalue: []
             };
         },
         components: {},
@@ -43,83 +40,62 @@
             },
             toggle(element) {
                 // element.active = !element.active;
-                element.active=!element.active;
+                element.active = !element.active;
             },
             del(index) {
                 this.store.splice(this.store.indexOf(index), 1);
+                // console.log(this.store);
             },
             get(element) {
 
-                // let a = [];
 
-                // if (element.active) {
-                //     // console.log(element);
-                //     this.store.push(element);
-                //
-                //     // this method will push the element into the array if parameter (element) is active:true
-                // } else {
-                //     this.del(element)
-                //     // this method will remove from the added array if parameter (element) is active:false
-                // }
-                // console.log(element.cuisineName)
-
-
-                for (let i = 0; i < this.resturantsdata.length; i++) {
-                    for (let j = 0; j < this.resturantsdata[i].cuisine.length; j++) {
-                        if (element.cuisineName === this.resturantsdata[i].cuisine[j].cuisine_name) {
-                            this.store.push(this.resturantsdata[i])
+                if (this.store.length > 0) {
+                    if (this.store.map(x => x.cuisine === element.cuisineId)) {
+                        this.del(element)
+                    } else {
+                        for (let i = 0; i < this.resturantsdata.length; i++) {
+                            for (let j = 0; j < this.resturantsdata[i].cuisine.length; j++) {
+                                if (element.cuisineName === this.resturantsdata[i].cuisine[j].cuisine_name) {
+                                    this.store.push(this.resturantsdata[i])
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    for (let i = 0; i < this.resturantsdata.length; i++) {
+                        for (let j = 0; j < this.resturantsdata[i].cuisine.length; j++) {
+                            if (element.cuisineName === this.resturantsdata[i].cuisine[j].cuisine_name) {
+                                this.store.push(this.resturantsdata[i])
+                            }
                         }
                     }
                 }
-                console.log(this.store);
             },
 
         },
         mounted() {
-            // computedObj1() {
+            console.log(this.store);
+        },
 
-                // let datavalue = [];
+
+        computed: {
+
+            computedObj1() {
+
+                let data = [];
                 this.resturantsdata.map(item => item.cuisine).forEach(y => y.filter((arr) => {
-                    return this.datavalue.push({
+                    return data.push({
                         parentId: arr.parent_id,
                         cuisineId: arr.cuisine_id,
                         cuisineName: arr.cuisine_name,
-                        active:false
+                        active: false
                     })
                 }));
-                console.log(this.datavalue);
+                // console.log(data);
                 //this code will show 5 element of the array list
-                // this.limit ? this.datavalue.slice(0, 5) : this.datavalue;
+                return this.limit ? data.slice(0, 5) : data;
 
-            // },
-        },
-
-        filters:{
-          slicy(value){
-              return this.limit ? value.slice(0, 5) : value;
-          }
-        },
-
-        computed: {
-            susant(){
-                return this.slicy(this.datavalue)
-            }
-            // computedObj1() {
-            //
-            //     let data = [];
-            //     this.resturantsdata.map(item => item.cuisine).forEach(y => y.filter((arr) => {
-            //         return data.push({
-            //             parentId: arr.parent_id,
-            //             cuisineId: arr.cuisine_id,
-            //             cuisineName: arr.cuisine_name,
-            //             active:false
-            //         })
-            //     }));
-            //     console.log(data);
-            //     //this code will show 5 element of the array list
-            //     return this.limit ? data.slice(0, 5) : data;
-            //
-            // },
+            },
 
 
         }

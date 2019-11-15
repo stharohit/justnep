@@ -17,10 +17,6 @@
             </perfect-scrollbar>
         </div>
 
-        <div v-for="(data,i) in datas" :key="i">
-            {{data.name}}
-        </div>
-
     </div>
 </template>
 

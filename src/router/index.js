@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-// import Resturantprofile from '../views/Resturantprofile.vue'
-import Category from '../views/Category.vue'
 
 Vue.use(VueRouter)
 
@@ -22,13 +20,21 @@ const routes = [
   },{
     path: '/category',
     name: 'category',
-    // component: () => import( '../views/Category.vue')
-    component: Category
+    component: () => import( '../views/Category.vue')
+
   },{
     path: '/profile',
     name: 'profile',
     component: () => import( '../views/Resturantprofile.vue')
-    // component: Resturantprofile
+  },{
+    path: '/checkout',
+    name: 'checkout',
+    component: () => import( '../views/Checkout.vue')
+  },
+  {
+    path: '/account',
+    name: 'account',
+    component: () => import( '../views/Account.vue')
   }
 ];
 

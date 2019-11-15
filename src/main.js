@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import axios from 'axios'
+// import axios from 'axios'
 import ScrollLoader from 'vue-scroll-loader'
 
 import "bootstrap"
@@ -14,12 +14,13 @@ import "../src/assets/icons/icofont.css";
 import PerfectScrollbar from 'vue2-perfect-scrollbar';
 import 'vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css';
 import VueScrollactive from 'vue-scrollactive';
-// Vue.config.productionTip = false;
+import { Plugin } from 'vue-fragment'
+
 Vue.use(VueScrollactive);
 Vue.use(PerfectScrollbar);
+Vue.use(Plugin);
+Vue.use(ScrollLoader);
 
-Vue.use(ScrollLoader)
-Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 new Vue({

@@ -184,11 +184,11 @@
     }
 
     .empty {
-        /*display: none;*/
+        display: none;
     }
 
     .full {
-        display: none
+        /*display: none*/
     }
 
     .productCard {

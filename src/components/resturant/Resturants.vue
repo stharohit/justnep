@@ -71,42 +71,36 @@
         components: {
             // 'scroll-loader': Scroll
         },
-        mounted() {
-            // console.log(this.$store.state.cursinename);
-        },
         methods: {
-          filterArray(arr, f) {
-            let myArrayFiltered = [];
-            for (let i = 0; i < arr.length; i++) {
-              for (let j = 0; j < f.length; j++) {
-                if (arr[i].cuisine_name === f[j].cuisine) {
-                  myArrayFiltered.push(f[j]);
-                  // myArrayFiltered.filter((item, idx, arr) => arr.indexOf(item) == idx);
-                  // myArrayFiltered.filter(x=> x.active === true)
-                  // console.log(myArrayFiltered)
-                }
-              }
+            filterArray(arr) {
+                let myArrayFiltered = [];
+                for (let i = 0; i < arr.length; i++) {
+                    // for (let j = 0; j < f.length; j++) {
+                    //     if (arr[i].cuisine_name === f[j].cuisine) {
+                            myArrayFiltered.push(arr[i]);
+                            // myArrayFiltered.filter((item, idx, arr) => arr.indexOf(item) == idx);
+                            // myArrayFiltered.filter(x=> x.active === true)
+                            // console.log(myArrayFiltered)
+                    //     }
+                    // }
 
-            } // this loop is to check the value from one array list to another arraylist
-            return myArrayFiltered;
-            //this myArrayFiltered.filter( ( item, idx, arr ) => arr.indexOf( item ) == idx );
-            //is used to filter the array list which is already exist and add one time only
-          }
+                } // this loop is to check the value from one array list to another arraylist
+                // console.log(myArrayFiltered);
+                return myArrayFiltered;
+                // is used to filter the array list which is already exist and add one time only
+            }
         },
 
         computed: {
             filterList() {
 
-                  let Arrreturn = this.filterArray(this.$store.state.cursinename,this.resturantsdata );
+                let Arrreturn = this.filterArray(this.$store.state.cursinename);
                 if (this.$store.state.cursinename.length > 0) {
-                     return Arrreturn;
+                    return Arrreturn;
+
                 } else {
-                  return this.resturantsdata;
+                    return this.resturantsdata;
                 }
-                //
-                // let d = this.$store.state.cursinename.map(x => x);
-                // return d;
-                // console.log(data);
             } // this filterList will do the filter
         }
     };
