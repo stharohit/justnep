@@ -1,6 +1,6 @@
 <template>
     <div class="profileSecurity">
-        <form action="">
+        <form action="" >
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <div class="form-group">
@@ -21,7 +21,7 @@
                 <div class="col-md-6 mb-3">
                     <div class="form-group">
                         <label for="confirmPassword">Comfirm password</label>
-                        <input type="password" class="form-control" id="comfirmPassword" >
+                        <input type="password" class="form-control" id="confirmPassword" >
                     </div>
                 </div>
             </div>

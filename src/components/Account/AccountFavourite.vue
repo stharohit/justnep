@@ -6,12 +6,12 @@
                     <span class="favTitle">Favourite Resturants</span>
 
                     <ul class="favouriteLists">
-                        <li class="py-3">
+                        <li class="py-3" >
                             <div class="emptyDialog" >
                                 You do not have any favourite restaurants added yet. Start adding now by clicking <a href="" class="">here</a>.
                             </div>
                         </li>
-                        <li class="py-3">
+                        <li class="py-3" >
                             <div class="listCard">
                                 <img class="rounded-circle" src="https://foodmandu.com//Images/Vendor/737/Logo/web_050619054534.logo.newrelease.eightdegrees.jpg" alt="">
                                 <div>
