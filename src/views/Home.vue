@@ -43,13 +43,13 @@ import Search from "@/components/Search";
 export default {
   name: "home",
   components: {
-    Search
+    Search,
   },
   data() {
     return {
       // Gets the current pathname
     };
   },
-  methods: {}
+  methods: {},
 };
 </script>
