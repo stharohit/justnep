@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Muli:600,800,900');
-
+@import url("https://fonts.googleapis.com/css?family=Muli:600,800,900");
 
 @font-face {
   font-family: proximaReg;
@@ -9,18 +8,16 @@
 * {
   margin: 0;
   padding: 0;
-
 }
 
 body {
   //font-family: 'Josefin Sans', sans-serif;
-  font-family: 'Muli', sans-serif;
+  font-family: "Muli", sans-serif;
   font-size: 14px;
   background: #f2f6f9;
   color: #666;
   margin: 0;
   padding: 0;
-
 }
 
 a {
@@ -49,13 +46,11 @@ ol {
   list-style: none;
   margin: 0;
   padding: 0;
-
 }
 
 figure {
   margin: 0;
 }
-
 
 $primary: rgb(246, 104, 46);
 
@@ -84,27 +79,43 @@ $primary: rgb(246, 104, 46);
   background: $primary;
   border: $primary;
   color: #fff;
-
 }
 
 .no-wrap {
   white-space: nowrap;
 }
 
-
 hr {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .bold {
   font-weight: bold;
 }
 
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ebebeb;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background: $primary;
+}
+
 // ======================================================================
 //END CSS FOR CUSTOM SCROLL BAR
 //=======================================================================
-
 
 .status {
   display: inline-flex;
@@ -116,18 +127,138 @@ hr {
 
   &--open {
     background: #5cb85c;
-
   }
 
   &--closed {
     background: #c4001d;
-
   }
 }
 
-a.primary-link, a.primary-link:hover {
-  color: darken(#00A082, 10%);
+a.primary-link,
+a.primary-link:hover {
+  color: darken(#00a082, 10%);
   font-weight: 700;
-  border-right: 3px solid darken(#00A082, 10%);
+  border-right: 3px solid darken(#00a082, 10%);
 }
 
+// ======================================================================
+//Location form
+//=======================================================================
+
+.location-form-wrap {
+  // padding: 35px;
+  // background-color: #fff;
+  margin: 30px 0 25px 0;
+
+  .location-form {
+    position: relative;
+
+    .form-control {
+      height: 58px;
+      line-height: 28px;
+      padding-top: 0;
+      padding-left: 15px;
+      padding-right: 160px;
+      font-size: 18px;
+      font-weight: 500;
+      border-radius: 0;
+
+      &:focus {
+        box-shadow: 0 0 20px rgba($color: #444444, $alpha: 0.1);
+        border-color: $primary;
+      }
+    }
+
+    .location-btn-wrap {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+
+      .current-location-btn {
+        color: #666;
+        border: none;
+        background: none;
+        padding: 4px;
+        margin-right: 10px;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: #f5f5f5;
+        }
+
+        &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+
+      .btn {
+        height: 100%;
+        border-radius: 0;
+        color: #fff;
+        position: relative;
+
+        &:hover {
+          color: #fff;
+        }
+
+        &:focus {
+          border: none;
+          outline: none;
+          box-shadow: none;
+
+          &::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: 0.3s;
+            animation-name: btnBlink2;
+            animation-duration: 0.5s;
+          }
+          &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: 0.3s;
+            animation-name: btnBlink;
+            animation-duration: 0.3s;
+          }
+        }
+
+        @keyframes btnBlink {
+          0% {
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+          }
+          100% {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+          }
+        }
+        @keyframes btnBlink2 {
+          0% {
+            box-shadow: 0 0 0 rgba(102, 102, 102, 0.5);
+          }
+          100% {
+            box-shadow: 0 0 10px rgba(102, 102, 102, 0.5);
+          }
+        }
+      }
+
+      .search-icon {
+        height: 100%;
+        border-radius: 4px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}
+// ======================================================================
+//Location form ends
+//=======================================================================

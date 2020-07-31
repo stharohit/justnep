@@ -1,87 +1,74 @@
 .home {
-    height: 100vh;
-    z-index: 0;
-    position: relative;
-    top: -80px;
-    margin-bottom: -80px;
-    overflow: hidden;
-    color: #fff;
+  z-index: 0;
+  position: relative;
+  overflow: hidden;
 
-    .left-side,
-    .right-side {
-        width: 50%;
+  .left-side,
+  .right-side {
+    width: 50%;
+  }
+
+  .left-side {
+    padding: 140px 0;
+
+    .search-wraps,
+    .app_links {
+      padding: 0 50px 0 100px;
     }
 
-    .left-side {
-        padding: 100px 0 0;
-        background: #333;
+    .app_links {
+      position: absolute;
+      bottom: 50px;
 
-        .search-wraps,
-        .app_links {
-            padding: 0 50px 0 100px;
+      div {
+        max-width: 150px;
+        cursor: pointer;
+        margin: 10px;
+
+        img {
+          width: 100%;
+          height: auto;
         }
-
-        .app_links {
-            position: absolute;
-            bottom: 50px;
-
-            div {
-                max-width: 150px;
-                cursor: pointer;
-                margin: 10px;
-
-               
-
-                img {
-                    width: 100%;
-                    height: auto;
-                }
-            }
-        }
-
-        .social_links {
-            position: absolute;
-            bottom: 50px;
-            right: 100px;
-
-            i {
-                font-size: 22px;
-                margin: 5px;
-            }
-
-            a {
-                .icofont-facebook {
-                    color: #3b5998
-                }
-
-                .icofont-twitter {
-                    color: #00aced;
-                }
-
-                .icofont-youtube {
-                    color: #bb0000;
-                }
-
-                .icofont-linkedin {
-                    color: #007bb6;
-                }
-
-                .icofont-instagram {
-                    color: #fb3958;
-                }
-            }
-        }
+      }
     }
 
-    .right-side {
-        background: url('../assets/food.jpg') no-repeat;
-        background-size: contain;
-        background-position: center;
+    .social_links {
+      position: absolute;
+      bottom: 50px;
+      right: 100px;
 
+      i {
+        font-size: 22px;
+        margin: 5px;
+      }
 
+      a {
+        .icofont-facebook {
+          color: #3b5998;
+        }
 
+        .icofont-twitter {
+          color: #00aced;
+        }
 
+        .icofont-youtube {
+          color: #bb0000;
+        }
+
+        .icofont-linkedin {
+          color: #007bb6;
+        }
+
+        .icofont-instagram {
+          color: #fb3958;
+        }
+      }
     }
+  }
 
-
+  .right-side {
+    background: url("../assets/cover.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
 }
