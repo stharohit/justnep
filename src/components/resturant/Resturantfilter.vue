@@ -1,12 +1,11 @@
 <template>
     <div class="food-items">
-        <div class="food-item" v-for="(element,index) in computedObj1 " :key="index" :class="{ active: element.active }"
-             @click="toggle(element); get(element); ">
-            <span class="food-item-name">{{element.cuisine}}</span>
-            <!--<span class="food-item-name" v-for="(name,i) in element.cuisine" :key="i">-->
-            <!--{{name.cuisine_name}}-->
-            <!--</span>-->
+
+        <div class="food-item" v-for="(element,index) in computedObj1  " :key="index"
+             @click="toggle(element);get(element); ">
+            <span class="food-item-name">{{element.cuisineName}}</span>
         </div>
+
 
         <!--show more button-->
         <div class="food-item show-more" @click=" limited(); ">
@@ -27,90 +26,79 @@
         name: "resturantfilter",
         data() {
             return {
+                // active: false,
                 limit: true,
                 resturantsdata: resturants,
-
-                store: this.$store.state.cursinename
-
+                store: this.$store.state.cursinename,
             };
         },
-
+        components: {},
         methods: {
 
             limited() {
                 this.limit = !this.limit;
             },
             toggle(element) {
+                // element.active = !element.active;
                 element.active = !element.active;
-                //this method will toggle the array active element to true or false
-
             },
             del(index) {
                 this.store.splice(this.store.indexOf(index), 1);
+                // console.log(this.store);
             },
             get(element) {
 
 
-                if (element.active) {
-                    this.store.push(element);
-                    // console.log('push',this.store)
-
-                    // this method will push the element into the array if parameter (element) is active:true
+                if (this.store.length > 0) {
+                    if (this.store.map(x => x.cuisine === element.cuisineId)) {
+                        this.del(element)
+                    } else {
+                        for (let i = 0; i < this.resturantsdata.length; i++) {
+                            for (let j = 0; j < this.resturantsdata[i].cuisine.length; j++) {
+                                if (element.cuisineName === this.resturantsdata[i].cuisine[j].cuisine_name) {
+                                    this.store.push(this.resturantsdata[i])
+                                }
+                            }
+                        }
+                    }
                 } else {
-                    this.del(element)
-                    // this method will remove from the added array if parameter (element) is active:false
+                    for (let i = 0; i < this.resturantsdata.length; i++) {
+                        for (let j = 0; j < this.resturantsdata[i].cuisine.length; j++) {
+                            if (element.cuisineName === this.resturantsdata[i].cuisine[j].cuisine_name) {
+                                this.store.push(this.resturantsdata[i])
+                            }
+                        }
+                    }
                 }
-
             },
 
         },
-        // mounted() {
-        //     let d = this.resturantsdata.map(item => item.cuisine.map(x => x.cuisine_name));
-        //
-        //     d.forEach(y => console.log(y.filter((item, idx, arr) => arr.indexOf(item) === idx)));
-        //     console.log(d);
-        //
-        // },
-        computed: {
+        mounted() {
+            console.log(this.store);
+        },
 
+
+        computed: {
 
             computedObj1() {
 
-                // let parent = this.resturantsdata.map( item => item.cuisine.cuisine_name)
-                //       .filter( ( item, idx, arr ) => arr.indexOf( item ) === idx )
-                // let parent = this.resturantsdata.map(item => item.cuisine.map(x => x.cuisine_name))
-                //     .filter((item, idx, arr) => arr.indexOf(item) === idx)
-                //You can do Array.prototype.map() to get an array with the objects name property and
-                //than Array.prototype.filter() using the parameters elem, index and array, in the function predicate, to eliminate repeated elements
+                let data = [];
+                this.resturantsdata.map(item => item.cuisine).forEach(y => y.filter((arr) => {
+                    return data.push({
+                        parentId: arr.parent_id,
+                        cuisineId: arr.cuisine_id,
+                        cuisineName: arr.cuisine_name,
+                        active: false
+                    })
+                }));
+                // console.log(data);
+                //this code will show 5 element of the array list
+                return this.limit ? data.slice(0, 5) : data;
 
-                // let findParent = parent.map((e) => {
-                //     return this.resturantsdata.find((a) => {
-                //         return a.cuisine.cuisine_name === e
-                //     })
-                // })
-                // Using map/find (instead of filter):
+            },
 
-                 // computedObj1() {
 
-                   let parent = this.resturantsdata.map( item => item.cursineName )
-                         .filter( ( item, idx, arr ) => arr.indexOf( item ) == idx )
-                        //  console.log(parent)
-                    //this code will not  dupliacte array list or donot print same list more than one
-                     //You can do Array.prototype.map() to get an array with the objects name property and
-                     //than Array.prototype.filter() using the parameters elem, index and array, in the function predicate, to eliminate repeated elements
-
-                    let findParent = parent.map((e) => { return this.resturantsdata.find((a) => { return a.cursineName  == e})})
-                   // Using map/find (instead of filter):
-
-                    //which maps parent to an array of objects,
-                    //where it finds the object from findParent that has the same _id
-                    //as the current id.
-                    // console.log(findParent)
-                    return this.limit ? findParent.slice(0, 5) : findParent;
-
-                },
-                // this code will show 5 element of the array list
-            }
+        }
     };
 </script>
 

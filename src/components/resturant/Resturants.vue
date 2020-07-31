@@ -18,14 +18,10 @@
               <div class="name-container">
                 <div class="resturant-name">{{element.name}}</div>
                 <div class="resturant-cursine">
-
-                  <!--{{element.cursineName}}-->
-                  <span v-for="(name,i) in element.cuisine.slice(0,3)" :key="i">
-                    {{name.cuisine_name}} -
-                  </span>
-                  <!--<span v-for="(fooditem,index) in element.foodName.slice(0, 2)" :key="index">-->
-                    <!--<span class="mr-1">- {{fooditem}}</span>-->
-                  <!--</span>-->
+                  <span
+                    v-for="(x,index) in element.cuisine.slice(0,3)"
+                    :key="index"
+                  >{{x.cuisine_name}} -</span>
                 </div>
               </div>
             </div>
@@ -58,9 +54,8 @@
 </template>
 
 <script>
-  import {resturants} from "../../data/data";
-  // import Scroll from "@/components/global/Scroll-Loader";
-
+import { resturants } from "../../data/data";
+// import Scroll from "@/components/global/Scroll-Loader";
 
 export default {
   name: "resturants",
@@ -69,45 +64,41 @@ export default {
       loadMore: true,
       page: 1,
       pageSize: 9,
-      resturantsdata: resturants
+      resturantsdata: resturants,
     };
   },
   components: {
     // 'scroll-loader': Scroll
   },
   methods: {
-    filterArray(arr, f) {
-      var myArrayFiltered = [];
-      for (var i = 0; i < arr.length; i++) {
-        for (var j = 0; j < f.length; j++) {
-          if (arr[i].cursineName === f[j].cursineName) {
-            myArrayFiltered.push(f[j]);
-            // myArrayFiltered.filter((item, idx, arr) => arr.indexOf(item) == idx);
-            // myArrayFiltered.filter(x=> x.active === true)
-            console.log(myArrayFiltered)
-          }
-        }
+    filterArray(arr) {
+      let myArrayFiltered = [];
+      for (let i = 0; i < arr.length; i++) {
+        // for (let j = 0; j < f.length; j++) {
+        //     if (arr[i].cuisine_name === f[j].cuisine) {
+        myArrayFiltered.push(arr[i]);
+        // myArrayFiltered.filter((item, idx, arr) => arr.indexOf(item) == idx);
+        // myArrayFiltered.filter(x=> x.active === true)
+        // console.log(myArrayFiltered)
+        //     }
+        // }
       } // this loop is to check the value from one array list to another arraylist
-      return myArrayFiltered
-      
-      //this myArrayFiltered.filter( ( item, idx, arr ) => arr.indexOf( item ) == idx );
-      //is used to filter the array list which is already exist and add one time only
-    }
+      // console.log(myArrayFiltered);
+      return myArrayFiltered;
+      // is used to filter the array list which is already exist and add one time only
+    },
   },
-  
+
   computed: {
     filterList() {
-     
-        let Arrreturn = this.filterArray(this.$store.state.cursinename,this.resturantsdata );
-      console.log('display', Arrreturn)
+      let Arrreturn = this.filterArray(this.$store.state.cursinename);
       if (this.$store.state.cursinename.length > 0) {
-           return Arrreturn;
-        // console.log('display', Arrreturn)
+        return Arrreturn;
       } else {
         return this.resturantsdata;
       }
-    } // this filterList will do the filter
-  }
+    }, // this filterList will do the filter
+  },
 };
 </script>
 
@@ -121,9 +112,6 @@ img {
   &-outlet {
     margin-top: 50px;
     margin-bottom: 50px;
-  }
-
-  &-col {
   }
 
   &-card {
@@ -143,7 +131,6 @@ img {
   &-image {
     overflow: hidden;
     border-radius: 3px;
-    height: 180px;
     width: 100%;
 
     img {
