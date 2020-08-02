@@ -262,3 +262,52 @@ a.primary-link:hover {
 // ======================================================================
 //Location form ends
 //=======================================================================
+
+// ======================================================================
+//Footer section starts
+//=======================================================================
+footer {
+  position: relative;
+  background-color: #000;
+  z-index: 10;
+
+  .footer-top {
+    color: #dddddd;
+
+    h4 {
+      margin-bottom: 15px;
+    }
+
+    ul li {
+      margin-bottom: 5px;
+
+      a {
+        color: #cfcfcf;
+      }
+    }
+  }
+
+  hr {
+    background-color: #fff;
+  }
+
+  .footer-bottom {
+    color: #fff;
+    padding: 15px 0;
+    font-size: 24px;
+
+    ul li {
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+
+      a {
+        display: inline-block;
+        color: #fff;
+      }
+    }
+  }
+}
+// ======================================================================
+//Footer section ends
+//=======================================================================

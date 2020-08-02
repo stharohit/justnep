@@ -18,7 +18,6 @@
     "postcss-loader": "^3.0.0",
     "vue": "^2.6.10",
     "vue-fragment": "^1.5.1",
-    "vue-mobile-detection": "^1.0.0",
     "vue-router": "^3.0.6",
     "vue-scroll-loader": "^1.1.6",
     "vue-scrollactive": "^0.8.0",

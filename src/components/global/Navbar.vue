@@ -2,11 +2,11 @@
   <div
     id="navbar"
     class="d-flex justify-content-between"
-    v-bind:class="{'fixed-top': fixed, 'fixedOnScroll': fixedOnScroll}"
+    v-bind:class="{ 'fixed-top': fixed, fixedOnScroll: fixedOnScroll }"
   >
     <router-link to="/">
       <div class="logo">
-        <img alt="Vue logo" src="../../assets/logo.png" />
+        <img alt="Vue logo" src="@/assets/logo.png" />
       </div>
     </router-link>
 
@@ -72,6 +72,7 @@ export default {
   z-index: 1;
   transition: box-shadow 0.2s, background 0.3s;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
 
   &.fixedOnScroll {
     position: fixed;

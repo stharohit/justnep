@@ -11,8 +11,8 @@
   </div>
 </template>
 <script>
-import Login from "@/components/Login.vue";
-import Navbar from "@/components/global/Navbar.vue";
+const Login = () => import("@/components/Login.vue");
+const Navbar = () => import("@/components/global/Navbar.vue");
 export default {
   data() {
     return {
