@@ -1,12 +1,13 @@
+import "@babel/polyfill";
+import "mutationobserver-shim";
 import Vue from "vue";
+import "./plugins/bootstrap-vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-// import axios from 'axios'
 import ScrollLoader from "vue-scroll-loader";
+import "./utils/AxiosInstance";
 
-import "bootstrap";
-import "bootstrap/scss/bootstrap.scss";
 import "../src/assets/icons/icofont.css";
 import "../src/styles/style.scss";
 import "../src/styles/responsive.scss";
@@ -26,5 +27,5 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
-  render: (h) => h(App),
+  render: (h) => h(App)
 }).$mount("#app");

@@ -12,13 +12,13 @@
 
     <div class="nav-link">
       <!-- <Search/> -->
-      <button class="btn-orange px-4 py-2 mx-1" v-on:click="addActive">
+      <button class="btn btn-orange px-4 py-2 mx-1" v-on:click="addActive">
         <span class="d-sm-block d-none">Login</span>
         <span class="d-sm-none d-block">
           <i class="icofont-user-alt-7"></i>
         </span>
       </button>
-      <button class="btn-orange px-4 py-2 no-wrap">
+      <button class="btn btn-orange px-4 py-2 no-wrap">
         <span class="d-sm-block d-none">Sign Up</span>
         <span class="d-sm-none d-block">
           <i class="icofont-fast-food"></i>
@@ -34,13 +34,13 @@ export default {
   name: "navbar",
   props: {
     addActive: {
-      type: Function,
-    },
+      type: Function
+    }
   },
   data() {
     return {
       fixed: true,
-      fixedOnScroll: false,
+      fixedOnScroll: false
     };
   },
   components: {
@@ -49,7 +49,7 @@ export default {
   watch: {
     $route() {
       this.$route.path === "/" ? (this.fixed = true) : (this.fixed = false);
-    },
+    }
   },
   created() {
     window.addEventListener("scroll", this.handleScroll);
@@ -62,8 +62,8 @@ export default {
       window.scrollY > 100
         ? (this.fixedOnScroll = true)
         : (this.fixedOnScroll = false);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">

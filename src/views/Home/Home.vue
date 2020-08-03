@@ -20,10 +20,10 @@
 </template>
 
 <script>
-const Footer = () => import("../components/global/Footer.vue");
-const LocationSearch = () => import("@/components/LocationSearch.vue");
+const Footer = () => import("@/components/global/Footer.vue");
+const LocationSearch = () => import("./LocationSearch.vue");
 const Resturants = () => import("@/components/resturant/Resturants");
-const StoreSection = () => import("./Home/StoreSection.vue");
+const StoreSection = () => import("./StoreSection.vue");
 
 export default {
   name: "home",
@@ -32,13 +32,13 @@ export default {
     LocationSearch,
     Resturants,
     StoreSection,
-    Footer,
+    Footer
   },
   data() {
     return {};
   },
   created() {
     // console.log(this);
-  },
+  }
 };
 </script>

@@ -75,10 +75,44 @@ $primary: rgb(246, 104, 46);
   color: $primary;
 }
 
-.btn-orange {
+.btn.btn-orange {
   background: $primary;
   border: $primary;
   color: #fff;
+  position: relative;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: 0.3s;
+      animation-name: btnBlink2;
+      animation-duration: 0.5s;
+    }
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: 0.3s;
+      animation-name: btnBlink;
+      animation-duration: 0.3s;
+    }
+  }
 }
 
 .no-wrap {
@@ -198,39 +232,6 @@ a.primary-link:hover {
         border-radius: 0;
         color: #fff;
         position: relative;
-
-        &:hover {
-          color: #fff;
-        }
-
-        &:focus {
-          border: none;
-          outline: none;
-          box-shadow: none;
-
-          &::after {
-            content: "";
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            transition: 0.3s;
-            animation-name: btnBlink2;
-            animation-duration: 0.5s;
-          }
-          &::before {
-            content: "";
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            transition: 0.3s;
-            animation-name: btnBlink;
-            animation-duration: 0.3s;
-          }
-        }
 
         @keyframes btnBlink {
           0% {
