@@ -1,7 +1,14 @@
 <template>
-  <div class="container pb-5">
+  <div class="container col-11 m-auto pb-5">
     <div class="row">
-      <div class="col-md-6 py-5">
+      <div class="col-md-4 position-relative">
+        <img
+          src="@/assets/justnep-app.png"
+          alt="Justnep App features"
+          class="app-image"
+        />
+      </div>
+      <div class="col-md-8 py-5">
         <h1 class="mb-3">
           Restaurants in your <br />
           pocket
@@ -30,13 +37,6 @@
             /></a>
           </li>
         </ul>
-      </div>
-      <div class="col-md-6 text-right position-relative">
-        <img
-          src="@/assets/justnep-app.png"
-          alt="Justnep App features"
-          class="app-image"
-        />
       </div>
     </div>
   </div>

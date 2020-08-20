@@ -1,35 +1,61 @@
 <template>
-  <div
-    id="navbar"
-    class="d-flex justify-content-between"
-    v-bind:class="{ 'fixed-top': fixed, fixedOnScroll: fixedOnScroll }"
-  >
-    <router-link to="/">
-      <div class="logo">
-        <img alt="Vue logo" src="@/assets/logo.png" />
-      </div>
-    </router-link>
+  <fragment>
+    <header :class="fixed ? 'fixed' : ''">
+      <div class="container-fluid col-11 m-auto p-0">
+        <div id="navbar" class="d-flex align-items-center">
+          <router-link to="/">
+            <div class="logo">
+              <img alt="Vue logo" src="@/assets/logo.png" />
+            </div>
+          </router-link>
 
-    <div class="nav-link">
-      <!-- <Search/> -->
-      <button class="btn btn-orange px-4 py-2 mx-1" v-on:click="addActive">
-        <span class="d-sm-block d-none">Login</span>
-        <span class="d-sm-none d-block">
-          <i class="icofont-user-alt-7"></i>
-        </span>
-      </button>
-      <button class="btn btn-orange px-4 py-2 no-wrap">
-        <span class="d-sm-block d-none">Sign Up</span>
-        <span class="d-sm-none d-block">
-          <i class="icofont-fast-food"></i>
-        </span>
-      </button>
-      <!-- <router-link to="/about" class="btn-orange">Become a Rider</router-link> -->
-    </div>
-  </div>
+          <div v-if="!fixed" class="nav-location" v-b-modal.modal-location>
+            <i class="icofont-location-pin"></i>&nbsp;
+            <input
+              type="text"
+              :value="address ? address : 'Find Restaurants Near By'"
+              id="addressInput"
+              disabled
+            />
+            <!-- location modal -->
+            <b-modal id="modal-location" size="lg" hide-header hide-footer>
+              <LocationSearch />
+            </b-modal>
+
+            <!-- location modal -->
+          </div>
+
+          <div class="flex-fill"></div>
+
+          <div class="nav-link">
+            <!-- <Search/> -->
+            <button class="btn px-4 py-2 mx-1" v-on:click="addActive">
+              <span class="d-sm-block d-none"
+                ><i class="icofont-user-alt-7"></i> Login</span
+              >
+            </button>
+            <button class="btn px-4 py-2 no-wrap">
+              <span class="d-sm-block d-none"
+                ><i class="icofont-fast-food"></i> Sign Up</span
+              >
+            </button>
+            <div class="position-relative">
+              <button class="btn px-4 py-2 mx-1" v-on:click="addActive">
+                <img :src="cartimg" alt="justnep cart" width="25px" />
+              </button>
+              <div class="cart-item-count"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </fragment>
 </template>
 <script>
+import LocationSearch from "@/components/global/LocationSearch.vue";
+import cartimg from "@/assets/smart-cart.svg";
 // import Search from "@/components/Search";
+
 export default {
   name: "navbar",
   props: {
@@ -40,39 +66,49 @@ export default {
   data() {
     return {
       fixed: true,
-      fixedOnScroll: false
+      address: null,
+      cartimg: cartimg
     };
   },
   components: {
-    // Search
+    LocationSearch
+  },
+  methods: {},
+  mounted() {
+    this.address = this.$getCurrentAddress();
+    location.pathname === "/" ? (this.fixed = true) : (this.fixed = false);
+  },
+  computed: {
+    currentAddress() {
+      return this.$store.getters.currentAddress;
+    }
   },
   watch: {
     $route() {
-      this.$route.path === "/" ? (this.fixed = true) : (this.fixed = false);
-    }
-  },
-  created() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  destroyed() {
-    window.removeEventListener("scroll", this.handleScroll);
-  },
-  methods: {
-    handleScroll() {
-      window.scrollY > 100
-        ? (this.fixedOnScroll = true)
-        : (this.fixedOnScroll = false);
+      location.pathname === "/" ? (this.fixed = true) : (this.fixed = false);
+    },
+    currentAddress(newAddress) {
+      this.address = newAddress;
     }
   }
 };
 </script>
 <style lang="scss">
+header {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 2px rgba($color: #000000, $alpha: 0.3);
+
+  &.fixed {
+    position: fixed;
+    width: 100%;
+    z-index: 99999;
+  }
+}
 #navbar {
-  padding: 15px;
   z-index: 1;
   transition: box-shadow 0.2s, background 0.3s;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
   z-index: 9999;
+  padding: 15px 0;
 
   &.fixedOnScroll {
     position: fixed;
@@ -107,5 +143,17 @@ export default {
       padding: 10px 20px;
     }
   }
+}
+#addressInput {
+  border: none;
+  cursor: pointer;
+
+  &:disabled {
+    background: none;
+  }
+}
+.nav-location {
+  font-size: 20px;
+  margin-top: 14px;
 }
 </style>

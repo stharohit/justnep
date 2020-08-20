@@ -1,22 +1,29 @@
 <template>
-  <div id="app">
-    <Navbar v-bind:addActive="this.addActive"></Navbar>
-    <div :class="{ active: !isHidden }">
-      <div class="overlay" v-on:click="addActive"></div>
-      <transition name="slide-right-left" key="2">
-        <Login v-if="!isHidden" v-bind:addActive="this.addActive" />
-      </transition>
+  <fragment>
+    <vue-topprogress ref="topProgress" color="#f6682e"></vue-topprogress>
+    <div id="app">
+      <Navbar v-bind:addActive="this.addActive"></Navbar>
+      <div :class="{ active: !isHidden }">
+        <div class="overlay" v-on:click="addActive"></div>
+        <transition name="slide-right-left" key="2">
+          <Login v-if="!isHidden" v-bind:addActive="this.addActive" />
+        </transition>
+      </div>
+      <router-view />
+      <Footer />
     </div>
-    <router-view />
-  </div>
+  </fragment>
 </template>
+
 <script>
+import { vueTopprogress } from "vue-top-progress";
 const Login = () => import("@/components/Login.vue");
 const Navbar = () => import("@/components/global/Navbar.vue");
+const Footer = () => import("./components/global/Footer.vue");
 export default {
   data() {
     return {
-      isHidden: true,
+      isHidden: true
     };
   },
   methods: {
@@ -26,12 +33,28 @@ export default {
     debug() {
       var curr = window.location.pathname; // eslint-disable-line
       console.log(curr); // eslint-disable-line no-console
-    },
+    }
   },
   components: {
     Login,
     Navbar,
+    vueTopprogress,
+    Footer
   },
+  computed: {
+    progressBar() {
+      return this.$store.getters.progress;
+    }
+  },
+  watch: {
+    progressBar(newprogress) {
+      if (newprogress) {
+        this.$refs.topProgress.start();
+      } else {
+        this.$refs.topProgress.done();
+      }
+    }
+  }
 };
 </script>
 
@@ -83,8 +106,6 @@ export default {
 }
 
 #app {
-  /*background: #000000;*/
   background: #ffffff;
-  overflow: hidden;
 }
 </style>

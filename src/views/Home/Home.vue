@@ -10,35 +10,35 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid py-5">
-      <h1 class="text-center">Popular Restaurants</h1>
-      <Resturants />
-    </div>
+    <PopularRestaurants />
+    <FoodNearMe />
     <StoreSection />
-    <Footer />
   </div>
 </template>
 
 <script>
-const Footer = () => import("@/components/global/Footer.vue");
-const LocationSearch = () => import("./LocationSearch.vue");
-const Resturants = () => import("@/components/resturant/Resturants");
+const FoodNearMe = () => import("./FoodNearMe.vue");
+const LocationSearch = () => import("@/components/global/LocationSearch.vue");
+const PopularRestaurants = () => import("./PopularRestaurants.vue");
 const StoreSection = () => import("./StoreSection.vue");
 
 export default {
   name: "home",
   components: {
-    // Search,
     LocationSearch,
-    Resturants,
     StoreSection,
-    Footer
+    PopularRestaurants,
+    FoodNearMe
   },
-  data() {
-    return {};
-  },
-  created() {
-    // console.log(this);
+  beforeMount: async function() {
+    const status = await this.$checkLocationPermissionStatus();
+    if (status == "granted" || status == "prompt") {
+      let latitude = this.$getLatitude();
+      let longitude = this.$getLongitude();
+      if (latitude & longitude) {
+        this.$router.push("category");
+      }
+    }
   }
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div class="container pt-5">
+    <div class="col-11 m-auto pt-5">
       <div class="footer-top">
         <div class="row">
           <div class="col-lg-3 col-md-6">
@@ -48,7 +48,7 @@
       <hr />
     </div>
     <div class="footer-bottom">
-      <div class="container">
+      <div class="col-11 m-auto">
         <div class="row">
           <div class="col-md-4 text-sm-center text-lg-left">
             &copy; All Rights Reserved.
@@ -83,7 +83,7 @@ export default {
   methods: {
     currentYear: function() {
       return Date("Y");
-    },
-  },
+    }
+  }
 };
 </script>

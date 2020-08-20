@@ -3,8 +3,8 @@ $secondary: rgb(230, 84, 27);
 $success: rgb(26, 231, 88);
 $info: rgb(163, 49, 4);
 $warning: rgb(248, 245, 42);
-$danger: rgb(236, 17, 17);
-$light: rgb(221, 221, 221);
+$danger: rgb(196, 21, 21);
+$light: rgb(243, 243, 243);
 $dark: rgb(32, 32, 32);
 
 $theme-colors: (
@@ -22,3 +22,24 @@ $theme-colors: (
 @import "../../node_modules/bootstrap/scss/bootstrap";
 // BootstrapVue and its default variables
 @import "../../node_modules/bootstrap-vue/src/index.scss";
+
+.list-group .list-group-item {
+  border-radius: 0;
+}
+.list-group-item-danger {
+  background-color: $danger;
+  color: $light;
+}
+#modal-addon-category .modal-content {
+  border-radius: 0;
+
+  .modal-body {
+    padding: 0;
+  }
+}
+.addon-modal-header {
+  padding: 20px;
+}
+.custom-control-label {
+  width: 100%;
+}
