@@ -1,16 +1,16 @@
-import Vue from "vue";
-import axios from "axios";
+import Vue from 'vue';
+import axios from 'axios';
 
 // register an instance of api
 Vue.prototype.$apiInstance = axios.create({
-  baseURL: "https://project.justnep.com/public/api/"
+  baseURL: 'https://project.justnep.com/public/api/',
 });
 
 // Mount initial Settings
 Vue.prototype.$getInitialSettings = async function() {
   let settings;
   await this.$apiInstance
-    .post("/get-settings")
+    .post('/get-settings')
     .then((data) => {
       settings = data;
     })
@@ -22,9 +22,9 @@ Vue.prototype.$getInitialSettings = async function() {
 Vue.prototype.$coordinateToAddress = async function(latitude, longitude) {
   let address;
   await this.$apiInstance
-    .post("/coordinate-to-address", {
+    .post('/coordinate-to-address', {
       lat: latitude,
-      lng: longitude
+      lng: longitude,
     })
     .then((data) => {
       address = data.data;
@@ -39,9 +39,9 @@ Vue.prototype.$coordinateToAddress = async function(latitude, longitude) {
 Vue.prototype.$getDeliveryRestaurants = async function(latitude, longitude) {
   var restaurants;
   await this.$apiInstance
-    .post("/get-delivery-restaurants", {
+    .post('/get-delivery-restaurants', {
       latitude: latitude,
-      longitude: longitude
+      longitude: longitude,
     })
     .then((data) => {
       restaurants = data.data;
@@ -56,9 +56,9 @@ Vue.prototype.$getDeliveryRestaurants = async function(latitude, longitude) {
 Vue.prototype.$getPopularGeoLocation = async function(latitude, longitude) {
   var popularPlaces;
   await this.$apiInstance
-    .post("/popular-geo-locations", {
+    .post('/popular-geo-locations', {
       latitude: latitude,
-      longitude: longitude
+      longitude: longitude,
     })
     .then((data) => {
       popularPlaces = data.data;
@@ -69,15 +69,15 @@ Vue.prototype.$getPopularGeoLocation = async function(latitude, longitude) {
   return popularPlaces;
 };
 
-// Initialize google place library first
+// First Initialize google place library
 Vue.prototype.$placesInitialization = new Promise((resolve) => {
-  window["GoogleMapsInit"] = resolve;
+  window['GoogleMapsInit'] = resolve;
 
-  let GMap = document.createElement("script");
+  let GMap = document.createElement('script');
 
   GMap.setAttribute(
-    "src",
-    `https://maps.googleapis.com/maps/api/js?key=AIzaSyA9KbAdZfEFI8vk8QFmRlqT3zX388QnxKc&callback=GoogleMapsInit&libraries=places`
+    'src',
+    `https://maps.googleapis.com/maps/api/js?key=AIzaSyA9KbAdZfEFI8vk8QFmRlqT3zX388QnxKc&callback=GoogleMapsInit&libraries=places`,
   );
 
   document.body.appendChild(GMap);
@@ -87,7 +87,7 @@ Vue.prototype.$placesInitialization = new Promise((resolve) => {
 Vue.prototype.$getCuisine = async function() {
   var cuisine;
   await this.$apiInstance
-    .post("/get-restaurant-category-slides")
+    .post('/get-restaurant-category-slides')
     .then((data) => {
       cuisine = data.data;
     })
@@ -105,10 +105,10 @@ Vue.prototype.$getFilteredRestaurants = async function(category_ids) {
   let longitude = this.$getLongitude();
   if (category_ids && category_ids.length > 0) {
     await this.$apiInstance
-      .post("/get-filtered-restaurants", {
+      .post('/get-filtered-restaurants', {
         category_ids: category_ids,
         latitude: latitude,
-        longitude: longitude
+        longitude: longitude,
       })
       .then((data) => {
         filteredRestaurants = data.data;
@@ -120,7 +120,7 @@ Vue.prototype.$getFilteredRestaurants = async function(category_ids) {
   } else {
     filteredRestaurants = await this.$getDeliveryRestaurants(
       latitude,
-      longitude
+      longitude,
     );
     this.$setProgressFalse();
   }
@@ -160,7 +160,7 @@ Vue.prototype.$checkCartItemsAvailability = async function(cart) {
   let cartCheck;
   await this.$apiInstance
     .post(`check-cart-items-availability`, {
-      items: cart
+      items: cart,
     })
     .then((data) => {
       cartCheck = data.data;
